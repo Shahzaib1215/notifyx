@@ -133,7 +133,10 @@ fun NotifyXApp() {
                     },
                     actions = {
                         IconButton(onClick = {
-                            context.startActivity(Intent(Settings.ACTION_NOTIFICATION_SETTINGS))
+                            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                                putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+                            }
+                            context.startActivity(intent)
                         }) { Icon(Icons.Default.Notifications, "Notification settings") }
                     }
                 )
